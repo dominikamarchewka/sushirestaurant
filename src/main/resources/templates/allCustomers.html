@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand bg-light navbar-light">
+    <a class="navbar-brand mr-auto" th:href="@{/orderOnline}">
+        <img th:src="@{/images/spot.png}"/>
+    </a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/showAllCustomers}">Klienci</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+<p align="center">
+<h2>Klienci</h2></p> <br>
+<table class="table table-striped">
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Telefon</th>
+        <th>Mail</th>
+        <th>Ulica</th>
+        <th>Numer mieszkania</th>
+        <th>Kod pocztowy</th>
+        <th>Kasuj</th>
+        <th>Aktualizuj</th>
+    </tr>
+    <tr th:each="customer: ${customers}">
+        <td th:text="${customer.name}">Imię</td>
+        <td th:text="${customer.lastName}">Nazwisko</td>
+        <td th:text="${customer.number}">Telefon</td>
+        <td th:text="${customer.mail}">Mail</td>
+        <td th:text="${customer.street}">Ulica</td>
+        <td th:text="${customer.apartment}">Numer mieszkania</td>
+        <td th:text="${customer.zipCode}">Kod pocztowy</td>
+        <td>
+            <a href="#" th:href="@{/delete(id=${customer.id})}" class="btn btn-danger">
+                <i class="fa fa-trash-o fa-lg"></i>Kasuj</a></td>
+
+        <td>
+            <a href="#" th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">
+                <i class="fa fa-trash-o fa-lg"></i>Aktualizuj</a></td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <tr>
+        <td> Wyszukaj osoby według nazwiska</td>
+        <td>
+            <form action="http://localhost:8080/find"><input name="lastName">
+        </td>
+        <td><input type="submit"></form></td>
+    </tr>
+
+</table>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+</body>
+</html>

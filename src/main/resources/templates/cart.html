@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Zamów online! </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div th:replace="/fragments/header :: header"/>
+<form method="post" action="/cart/update">
+    <div class="jumbotron d-flex align-items-center">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-borderless table-sm ">
+                    <tr>
+                        <td><h1>Koszyk</h1></td>
+                        <td th:align="right"><input type="submit" value="Aktualizuj"></td>
+                    </tr>
+                </table>
+                <div class="panel-default well" th:each="item : ${session.cart}">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-sm ">
+                            <td class="col-md-2"><h4 th:text="${item.product.name}">Nazwa</h4></td>
+                            <td class="col-md-4"><h6 th:text="${item.product.description}">Opis</h6></td>
+                            <td class="col-md-5" th:align="right"><input type="number" th:align="center"
+                                                                         th:value="${item.quantity}"
+                                                                         name="quantity" style="width: 50px" th:min="1"></td>
+                            <td class="col-md-3" th:align="center"><h6
+                                    th:text="${#numbers.formatCurrency(item.product.price * item.quantity)}">Cena</h6>
+                            </td>
+                            <td class="col-md-3" th:align="right"><a
+                                    th:href="@{'/cart/removeProduct/{id}'(id=${item.product.idProduct})}"
+                                    class="btn btn-danger">
+                                <i class="fa fa-trash-o fa-lg"></i></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </br>
+            </div>
+            <h4 th:align="right">Kwota całkowita:</h4>
+            <h4 th:text="${#numbers.formatCurrency(total)}" th:align="right"></h4>
+            </br>
+            <a th:href="@{/form}" class="btn btn-primary float-right"></i>Przejdź dalej</a>
+        </div>
+    </div>
+    <div th:replace="/fragments/footer :: footer"/>
+</form>
+</body>
+</html>

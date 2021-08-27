@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand bg-light navbar-light">
+    <a class="navbar-brand mr-auto" th:href="@{/orderOnline}">
+        <img th:src="@{/images/spot.png}"/>
+    </a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/showAllProducts}">Produkty</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/addProduct}">Dodaj nowy produkt</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+<p align="center">
+<h2>Produkty</h2></p> <br>
+<table class="table table-striped">
+    <tr>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>Cena</th>
+        <th>Status</th>
+        <th>Kategoria</th>
+        <th>Kasuj</th>
+        <th>Aktualizuj</th>
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.name}">Nazwa</td>
+        <td th:text="${product.description}">Opis</td>
+        <td th:text="${product.price}">Cena</td>
+        <td th:text="${product.status}">Status</td>
+        <td th:text="${product.category.getCategoryName()}">Kategoria</td>
+        <td>
+            <a href="#" th:href="@{/deleteProduct(id=${product.idProduct})}" class="btn btn-danger">
+                <i class="fa fa-trash-o fa-lg"></i>Kasuj</a></td>
+
+        <td>
+            <a href="#" th:href="@{/editProduct(id=${product.idProduct})}" class="btn btn-primary">
+                <i class="fa fa-trash-o fa-lg"></i>Aktualizuj</a></td>
+    </tr>
+</table>
+
+    <table class="table table-striped">
+        <tr>
+            <td> Wyszukaj danie według kategorii</td>
+            <td>
+                <form action="http://localhost:8080/findCategory"><input name="categoryName">
+            </td>
+            <td><input type="submit"></form></td>
+        </tr>
+    </table>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+</body>
+</html>

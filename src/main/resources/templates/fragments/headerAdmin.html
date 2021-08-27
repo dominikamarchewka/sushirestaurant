@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<div th:fragment="headerAdmin">
+    <nav class="navbar navbar-expand bg-light navbar-light">
+        <a class="navbar-brand mr-auto" th:href="@{/orderOnline}">
+            <img th:src="@{/images/spot.png}"/>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin}">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/showAllProducts}">Produkty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/showAllCustomers}">Klienci</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/formAdmin}">Dodaj admina</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

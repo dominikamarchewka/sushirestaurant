@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Koszyk</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div th:replace="/fragments/headerAdmin :: headerAdmin"/>
+
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+<p align="center">
+<h2>Dodano nowego admina! Witamy: </h2>
+<h2 th:text="${admin.nameAdmin} "></h2><h2 th:text="${admin.lastNameAdmin}"></h2><br>
+</table>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+</body>
+</html>

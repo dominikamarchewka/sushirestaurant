@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Podaj dane</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="/fragments/headerAdmin :: headerAdmin"/>
+<div class="jumbotron d-flex align-items-center">
+    <div class="container">
+    <h2 align="center">Podaj dane</h2>
+        <div class="col-6 offset-3">
+            <form th:action="@{/addAdmin}" method="post">
+                <div class="form-group">
+                    <label for="FormControl">Imię</label>
+                    <input type="text" class="form-control" id="FormControl" name="nameAdmin" pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+" required>
+                </div>
+                <div class="form-group">
+                    <label for="FormControl">Nazwisko</label>
+                    <input type="text" class="form-control" name="lastNameAdmin" pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+" required>
+                </div>
+                <div class="form-group">
+                    <label for="FormControl">Login</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="FormControl">Hasło</label>
+                    <input type="password" class="form-control" name="password" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,30}$/g" required>
+                </div>
+                <input type="reset" value="Skasuj formularz">
+                <button type="submit" class="btn btn-outline-info float-right">Przejdź dalej</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+</body>
+</html>

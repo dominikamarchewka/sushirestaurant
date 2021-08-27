@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="/fragments/header :: header"/>
+<div class="jumbotron d-flex align-items-center">
+    <div class="container-fluid">
+        <h6>Nasza restauracja realizuje dostawy sushi na terenie całego Wrocławia.</h6>
+        </br>
+        Po wcześniejszym, telefonicznym ustaleniu warunków, dowozimy dostarczamy także nasze sushi do mniejszych
+        podwrocławskich miejscowości.</br>
+        Zamówienia można składać online, bezpośrednio na stronie internetowej lub telefonicznie +48533513250.</br>
+        </br>
+        <h6>Zamówienia z dowozem przyjmujemy do godz. 22:00</h6>
+        <ul>
+            <li> Dowóz do 3km bezpłatny!</li>
+            <li> Do 5km płatny 5 zł (każdy dodatkowo rozpoczęty kilometr płatny +1zł)</li>
+            <li> Minimalna wartość zamówienia na dowóz to 60zł</li>
+            <li> Dowóz do 10km gratis przy zamówieniu powyżej 150zł</li>
+        </ul>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+</body>
+</html>
